@@ -36,5 +36,12 @@ public class ExpositionRepositoryTest {
         float CA = ex.CA() ; 
         assertEquals(quelCADansLeJeuDeTest, CA , "On doit trouver un CA de 2 000 000€");
     }
+    @Test
+    @Sql("test-data.sql")
+    public void CAExposition () {
+        float quelCADansLeJeuDeTest = 2000000; 
+        float CA = expositionDAO.chiffreAffairePour(1) ; 
+        assertEquals(quelCADansLeJeuDeTest, CA , "On doit trouver un CA de 2 000 000€");
+    }
 
 }
