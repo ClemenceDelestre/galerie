@@ -24,6 +24,5 @@ public interface ExpositionRepository extends JpaRepository<Exposition, Integer>
             + "WHERE Exposition.id = :id",
             nativeQuery = true
     )
-    
     float chiffreAffairePour(Integer id);
 }
