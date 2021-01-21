@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Liste de Tableaux</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel ="stylesheet" type ="text/css" th:href="@{/css/style.css}" href=".../static/css/style.css"/>
+    </head>
+    <body>
+        <div>
+            <h1>Les différents tableaux </h1>
+            <a th:href="@{add}" href='formulaireTableau.html'>Ajouter un tableau</a>
+            <h3 th:text="${message}">Message de succès ou d'erreur</h3>
+            <table>
+                <caption>Tableaux</caption>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Support</th>
+                        <th>Dimension</th>
+                        <th>Artiste</th>
+                        <th>Supprimer le Tableau</th>
+                    </tr>
+                </thead>
+                <tbody th:each="t:${tableaux}">
+                    <tr>
+                        <td><em th:text="${t.titre}"></em> </td><!-- titre du tableau-->
+                        <td><em th:text="${t.support}"></em></td><!-- support du tableau -->
+                        <td><em th:text="${t.dimension}"></em></td><!-- dimension du tableau -->
+                        <td><em th:if="${t.auteur}==Null">Artiste inconnu</em>
+                            <em th:unless="${t.auteur}==Null">[[${t.auteur.nom}]]</em></td>
+                        <td> <a th:href="@{delete(id=${t.id})}">Supprimer le tableau [[${t.id}]]</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr/>
+		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+		<hr/>
+        </div>
+    </body>
+</html>
